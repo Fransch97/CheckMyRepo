@@ -2,15 +2,29 @@
 import React, {Component} from "react";
 import { StyleSheet, View, Text } from "react-native";
 import {useFonts, Montserrat_300Light}  from '@expo-google-fonts/inter';
+import { DeviceEventEmitter } from "react-native";
 
 export default class Home extends Component {
     state ={
-        username: this.props.route.params.username,
-        repository: this.props.route.params.repository,
+        username: null,
+        repository: null,
         bottomButton: "check"
     }
 
     render(){
+        
+        DeviceEventEmitter.addListener('event.username', (eventdata)=>{
+            console.log(eventdata)
+            this.setState({username:eventdata})
+            console.log(this.state.username)
+        });
+        
+        DeviceEventEmitter.addListener('event.repository', (eventdata)=>{
+            console.log(eventdata)
+            this.setState({repository:eventdata})
+            console.log(this.state.repository)
+        });
+
         return (
             <View style={styles.container}>
 

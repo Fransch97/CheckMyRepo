@@ -2,6 +2,7 @@
 import React, {Component} from "react";
 import { StyleSheet, View, Text, TextInput, Image, TouchableOpacity } from "react-native";
 import {useFonts, Montserrat_300Light}  from '@expo-google-fonts/inter';
+import { DeviceEventEmitter } from "react-native";
 
 export default class Repo extends Component{
     state ={
@@ -39,8 +40,9 @@ export default class Repo extends Component{
     
                 <Text 
                     style={styles.bottomButton}
-                    onPress={() => 
-                        this.props.navigation.navigate('Home', {repository:this.state.repository})
+                    onPress={() => {
+                        DeviceEventEmitter.emit('event.repository',  this.state.repository);
+                        this.props.navigation.navigate('Home')}
                     }
                 >
                     {this.state.bottomButton}
