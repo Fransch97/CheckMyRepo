@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from './Screens/Home';
 import User from './Screens/User';
 import Repo from './Screens/Repo';
+import Welldone from './Screens/Welldone';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ export default function App() {
         <Stack.Screen name="Home" component={Home}/>
         <Stack.Screen name="Repo" component={Repo}/>
         <Stack.Screen name="User" component={User}/>
+        <Stack.Screen name="Welldone" component={Welldone}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
