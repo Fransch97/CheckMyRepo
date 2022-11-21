@@ -1,30 +1,35 @@
 //native 
+import React, {Component} from "react";{}
 import { StyleSheet, View, Text } from "react-native";
 import {useFonts, Montserrat_300Light}  from '@expo-google-fonts/inter';
 
-export default function App() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.firstTitle}>
-            Set the repository address
-        </Text>
-        <Text style={styles.githubTitle}>
-            github.com
-        </Text>
-        <Text 
-            style={styles.sections}
-        >
-            <Text style={{color:"black"}}>/</Text>
-            User
-        </Text>
-        <Text
-            style={styles.sections}
-        >
-            <Text style={{color:"black"}}>/</Text>
-            Repo
-        </Text>
-      </View>
-    );
+export default class Home extends Component {
+    render(){
+        return (
+          <View style={styles.container}>
+            <Text style={styles.firstTitle}>
+                Set the repository address
+            </Text>
+            <Text style={styles.githubTitle}>
+                github.com
+            </Text>
+            <Text 
+                style={styles.sections}
+                onPress={()=>{this.props.navigation.navigate('User')}}
+            >
+                <Text style={{color:"black"}}>/</Text>
+                User
+            </Text>
+            <Text
+                style={styles.sections}
+                onPress={()=>{this.props.navigation.navigate('Repository')}}
+            >
+                <Text style={{color:"black"}}>/</Text>
+                Repo
+            </Text>
+          </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({

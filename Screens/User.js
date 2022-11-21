@@ -1,5 +1,5 @@
 //native 
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, TextInput } from "react-native";
 import {useFonts, Montserrat_300Light} from "@expo-google-fonts/dev";
 
 export default function App() {
