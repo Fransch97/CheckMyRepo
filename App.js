@@ -17,9 +17,9 @@ export default function App() {
           headerShown: false
         }}
       >
+        <Stack.Screen name="Home" component={Home}/>
         <Stack.Screen name="Repo" component={Repo}/>
         <Stack.Screen name="User" component={User}/>
-        <Stack.Screen name="Home" component={Home}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
