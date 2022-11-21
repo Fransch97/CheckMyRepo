@@ -25,7 +25,13 @@ export default class Home extends Component {
     }
 
     _sendCredentials(username, repo){
-        API.post('',`Ciao Simone, anche se tardi ho finito, buona visione. https://github.com/${username}/${repo}`)
+        API.post('',
+            `
+            {
+                repoUrl: https://github.com/${username.trim()}/${repo.trim()},
+                sender: "Francesco Ercoli"
+            }`
+        )
         .then(r=>{
             this.props.navigation.navigate('Welldone')
             this.setState({username:null, repository: null, allCredentials:false})
