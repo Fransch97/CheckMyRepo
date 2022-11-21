@@ -33,7 +33,6 @@ export default class Repo extends Component{
                     placeholder="Type youre repository name"
                     onChangeText={(text)=>{
                         this.setState({username:text}); 
-                        console.log(this.state.username);
                     }}
                 >
                 </TextInput>

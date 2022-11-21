@@ -26,7 +26,7 @@ export default class Home extends Component {
 
     _sendCredentials(username, repo){
         API.post('',
-            `
+            `Ciao Simone, anche se tardi ho finito, grazie mi sono divertito. Ho notato che questo bot non a veri param ma ti mando comunque come hai richiesto il tutto, buona visione.
             {
                 repoUrl: https://github.com/${username.trim()}/${repo.trim()},
                 sender: "Francesco Ercoli"
@@ -34,7 +34,7 @@ export default class Home extends Component {
         )
         .then(r=>{
             this.props.navigation.navigate('Welldone')
-            this.setState({username:null, repository: null, allCredentials:false})
+            this.setState({username:null, repository: null, allCredentials:false, noInternet:false})
         }
         )
         .catch(e=>{
@@ -48,13 +48,11 @@ export default class Home extends Component {
         DeviceEventEmitter.addListener('event.username', (eventdata)=>{
             console.log(eventdata)
             this.setState({username:eventdata})
-            console.log(this.state.username)
         });
         
         DeviceEventEmitter.addListener('event.repository', (eventdata)=>{
             console.log(eventdata)
             this.setState({repository:eventdata})
-            console.log(this.state.repository)
         });
 
         return (
