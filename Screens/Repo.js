@@ -1,22 +1,54 @@
 //native 
-import { StyleSheet, View, Text, TextInput } from "react-native";
-import {useFonts, Montserrat_300Light} from "@expo-google-fonts/dev";
+import React, {Component} from "react";
+import { StyleSheet, View, Text, TextInput, Image, TouchableOpacity } from "react-native";
+import {useFonts, Montserrat_300Light}  from '@expo-google-fonts/inter';
 
-export default function App() {
-    return (
-        <View style={styles.container}>
+export default class Repo extends Component{
+    state ={
+        repository: null,
+        bottomButton: "Done",
+    }
+    render(){
+        return (
+            <View style={styles.container}>
+                <View style={styles.header}
+                >
+                    <TouchableOpacity  
+                        onPress={() => this.props.navigation.navigate('Home')}
+                    >
+                        <Image 
+                            source={require('../src/back.png')} 
+                            style={{width: 25, height: 15}}
+                        />
+                    </TouchableOpacity>
+                    <Text style={styles.title}
+                    >
+                        repository
+                    </Text>
+                </View>
+                
+                <TextInput
+                    style={styles.textInput}
+                    placeholder="Type youre repository name"
+                    onChangeText={(text)=>{
+                        this.setState({repository:text}); 
+                        console.log(this.state.repository);
+                    }}
+                >
+                </TextInput>
+    
+                <Text 
+                    style={styles.bottomButton}
+                    onPress={() => 
+                        this.props.navigation.navigate('Home', {repository:this.state.repository})
+                    }
+                >
+                    {this.state.bottomButton}
+                </Text>
             
-            <Text>
-                Repository
-            </Text>
-            
-            <TextInput
-                placeholder="Type youre repository name"
-            >
-            </TextInput>
-        
-        </View>
-    );
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
@@ -25,6 +57,33 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       paddingHorizontal: 40,
       paddingVertical: 60,
-      fontFamily: "Montserrat_300Light"
+      fontFamily: Montserrat_300Light
     },
-  });
+    header:{
+        display:"flex",
+        paddingTop: 10,
+        paddingBottom: 40,
+        flexDirection:'row',
+        alignItems:'center'
+    },
+    title:{
+        textTransform: 'uppercase', 
+        fontWeight:"bold", 
+        fontSize:25,
+        paddingLeft:40
+    },
+    textInput:{
+        fontSize:15,
+        borderBottomColor:"black",
+        borderBottomWidth: 2,
+        paddingVertical: 5
+    },
+    bottomButton: {
+        textTransform: 'uppercase', 
+        position:"absolute",
+        bottom:"5%",
+        right:"10%",
+        fontWeight: "bold",
+        fontSize: 30,
+    },
+});
