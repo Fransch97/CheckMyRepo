@@ -1,30 +1,26 @@
 //native 
-import React, {Component} from "react";
-import { StyleSheet, View, Text, TextInput, Image, TouchableOpacity } from "react-native";
+import React from "react";
+import { StyleSheet, View, Text} from "react-native";
 import {useFonts, Montserrat_300Light}  from '@expo-google-fonts/inter';
 
-export default class Repo extends Component{
-    state ={
-        repository: null,
-        bottomButton: "Back",
-    }
-    render(){
-        return (
-            <View style={styles.container}>
-                <Text style={styles.title}>All done!</Text>
-                <Text style={styles.title}>Repository dent.</Text>
-                <Text 
-                    style={styles.bottomButton}
-                    onPress={() => {
-                        this.props.navigation.navigate('Home')
-                    }}
-                >
-                    {this.state.bottomButton}
-                </Text>
-            </View>
-        );
-    }
+const Welldone = ({navigation}) => {
+    return (
+        <View style={styles.container}>
+            <Text style={styles.title}>All done!</Text>
+            <Text style={styles.title}>Repository sent.</Text>
+            <Text 
+                style={styles.bottomButton}
+                onPress={() => {
+                    navigation.navigate('Home')
+                }}
+            >
+                cool
+            </Text>
+        </View>
+    );
 }
+
+export default Welldone;
 
 const styles = StyleSheet.create({
     container: {

@@ -4,21 +4,42 @@ const Stack = createStackNavigator();
 
 //screens
 import Home from './Screens/Home';
-import User from './Screens/User';
-import Repo from './Screens/Repo';
+import InsertScreen from './Screens/InsertScreen';
 import Welldone from './Screens/Welldone';
 
 const AppNavigator = () => {
-    return (
-        <Stack.Navigator screenOptions={{headerShown: false}}>
+  return (
+    <Stack.Navigator screenOptions={{headerShown: false}}>
 
-          <Stack.Screen name="Home" component={Home}/>
-          <Stack.Screen name="Repo" component={Repo}/>
-          <Stack.Screen name="User" component={User}/>
-          <Stack.Screen name="Welldone" component={Welldone}/>
-        
-        </Stack.Navigator>
-    );
+      <Stack.Screen 
+        name="Home" 
+        component={Home}
+      />
+      <Stack.Screen 
+        name="User" 
+        component={InsertScreen}
+        initialParams={{ 
+          title: "user", 
+          placeholder:"github username", 
+          screenEmit:"username" 
+        }} 
+      />
+      <Stack.Screen 
+        name="Repo" 
+        component={InsertScreen}
+        initialParams={{ 
+          title: "repository", 
+          placeholder:"repository name",
+          screenEmit:"repository" 
+        }} 
+      />
+      <Stack.Screen 
+        name="Welldone" 
+        component={Welldone}
+      />
+    
+    </Stack.Navigator>
+  );
 }
 
 export default AppNavigator;
